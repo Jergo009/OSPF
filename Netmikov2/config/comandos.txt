@@ -1,0 +1,4 @@
+interface loopback0
+ip address 1.1.1.1 255.255.255.255
+exit
+do show ip int bri

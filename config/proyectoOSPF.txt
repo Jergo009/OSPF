@@ -1,0 +1,92 @@
+--Configurar Router1
+conf t
+interface e0/0
+ip address 192.168.122.10 255.255.255.0
+no shut
+do show ip interface brief
+do write
+
+--Configurar SSH
+conf t
+hostname CiscoR1
+ip domain-name dominio.com
+crypto key generate rsa
+#Definir tamaño de la llave de al menos 2048 bits
+ip ssh version 2
+
+--Configurar vty
+line vty 0 4
+transport input ssh telnet      #ssh y telnet se habilitan
+login local                     #metodo de autenticacion usuario y password
+do write
+end
+
+--Asignar password a CiscoR1 (usuario)
+conf t
+username CiscoR1 password cisco1
+
+---------------------------------------------------------------------------------------
+
+--Configurar Router2
+conf t
+interface e0/0
+ip address 192.168.122.20 255.255.255.0
+no shut
+do show ip interface brief
+do write
+
+--Configurar SSH
+conf t
+hostname CiscoR2
+ip domain-name dominio.com
+crypto key generate rsa
+#Definir tamaño de la llave de al menos 2048 bits
+ip ssh version 2
+
+--Configurar vty
+line vty 0 4
+transport input ssh telnet      #ssh y telnet se habilitan
+login local                     #metodo de autenticacion usuario y password
+do write
+end
+
+--Asignar password a CiscoR2 (usuario)
+conf t
+username CiscoR2 password cisco2
+
+
+---------------------------------------------------------------------------------------
+
+--Configurar Router3
+conf t
+interface e0/0
+ip address 192.168.122.30 255.255.255.0
+no shut
+do show ip interface brief
+do write
+
+--Configurar SSH
+conf t
+hostname CiscoR3
+ip domain-name dominio.com
+crypto key generate rsa
+#Definir tamaño de la llave de al menos 2048 bits
+ip ssh version 2
+
+--Configurar vty
+line vty 0 4
+transport input ssh telnet      #ssh y telnet se habilitan
+login local                     #metodo de autenticacion usuario y password
+do write
+end
+
+--Asignar password a CiscoR3 (usuario)
+conf t
+username CiscoR3 password cisco3
+
+
+--desabilitar ospf
+
+enable
+conf t
+no router ospf 1
